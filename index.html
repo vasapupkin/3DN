@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viking 3D Game</title>
+    <style>
+        body { margin: 0; }
+        canvas { display: block; }
+        #controls {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 5px;
+        }
+        #controls button {
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #up { grid-column: 2 / 3; }
+        #left { grid-column: 1 / 2; grid-row: 2 / 3; }
+        #right { grid-column: 3 / 4; grid-row: 2 / 3; }
+        #down { grid-column: 2 / 3; grid-row: 3 / 4; }
+        #throw-control {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        #throw {
+            width: 50px;
+            height: 50px;
+            font-size: 24px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        #armature-control {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+        }
+        #armature {
+            width: 60px;
+            height: 60px;
+            font-size: 30px;
+            background-color: rgba(255, 255, 255, 0.5);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.3s ease;
+        }
+        #armature:hover {
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+        #armature:active {
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+        #armature svg {
+            width: 30px;
+            height: 30px;
+        }
+    </style>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplex-noise/2.4.0/simplex-noise.min.js"></script>
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.150.1/build/three.module.js",
+                "three/addons/": "https://unpkg.com/three@0.150.1/examples/jsm/",
+                "cannon-es": "https://unpkg.com/cannon-es@0.20.0/dist/cannon-es.js"
+            }
+        }
+    </script>
+</head>
+<body>
+    <div id="controls">
+        <button id="up">↑</button>
+        <button id="left">←</button>
+        <button id="right">→</button>
+        <button id="down">↓</button>
+    </div>
+    <div id="armature-control">
+        <button id="armature">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path d="M19 3l-6 6-2-2-7 7V21h7l7-7-2-2 6-6-3-3zM10 14l-2 2-2-2 2-2 2 2z" fill="currentColor"/>
+            </svg>
+        </button>
+    </div>
+    <script type="module" src="js/game.js"></script>
+</body>
+</html>
